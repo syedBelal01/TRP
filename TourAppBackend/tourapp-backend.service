@@ -1,0 +1,30 @@
+[Unit]
+Description=TourApp Backend Gunicorn Application
+After=network.target
+
+[Service]
+Type=notify
+User=ec2-user
+Group=ec2-user
+WorkingDirectory=/home/ec2-user/tourapp-backend
+Environment=PATH=/home/ec2-user/tourapp-backend/venv/bin
+Environment=FLASK_ENV=production
+Environment=PYTHONPATH=/home/ec2-user/tourapp-backend
+ExecStart=/home/ec2-user/tourapp-backend/venv/bin/gunicorn --config gunicorn.conf.py app:app
+ExecReload=/bin/kill -s HUP $MAINPID
+Restart=always
+RestartSec=3
+KillMode=mixed
+TimeoutStopSec=5
+PrivateTmp=true
+
+# Security settings
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/home/ec2-user/tourapp-backend
+ReadWritePaths=/var/log/tourapp
+ReadWritePaths=/var/run/tourapp
+
+[Install]
+WantedBy=multi-user.target

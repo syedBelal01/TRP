@@ -1,0 +1,16 @@
+PLACEHOLDER FOR PRENITWORLD LOGO
+
+Please replace this file with your actual Prenitworld LIFECARE logo image.
+
+Recommended specifications:
+- Format: PNG with transparent background
+- Size: 240x80 pixels (or similar aspect ratio)
+- File name: prenitworld-logo.png
+- Location: TourAppExpo/assets/images/prenitworld-logo.png
+
+The logo should include:
+- The 3D P symbol
+- "prenitworld" text
+- "LIFECARE" tagline (optional, as it can be added via text)
+
+Once you add your logo image, the app will automatically use it instead of the custom drawn logo.
