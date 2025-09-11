@@ -35,6 +35,7 @@ export const API_ENDPOINTS = {
   ADMIN_REGISTER: `${API_BASE_URL}/admin/register`,
   ADMIN_PENDING_USERS: `${API_BASE_URL}/admin/pending-users`,
   ADMIN_APPROVE_USER: `${API_BASE_URL}/admin/approve-user`,
+  ADMIN_ACTION: `${API_BASE_URL}/admin-action`,
   
   // Accounts
   ACCOUNTS_APPROVED_REQUESTS: `${API_BASE_URL}/accounts/approved-requests`,

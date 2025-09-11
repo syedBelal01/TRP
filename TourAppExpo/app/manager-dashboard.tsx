@@ -6,6 +6,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { API_ENDPOINTS } from '../config/api';
 
 
 
@@ -223,7 +224,7 @@ export default function ManagerDashboard() {
 
   const fetchRequests = async () => {
     try {
-      const response = await fetch('http://192.168.3.251:5000/visit-requests');
+      const response = await fetch(API_ENDPOINTS.VISIT_REQUESTS);
               if (response.ok) {
           const data = await response.json();
           
@@ -336,7 +337,7 @@ export default function ManagerDashboard() {
 
   const performAction = async (requestId: string, action: string) => {
     try {
-              const response = await fetch(`http://192.168.3.251:5000/visit-request/${requestId}`, {
+              const response = await fetch(API_ENDPOINTS.VISIT_REQUEST(requestId), {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -439,7 +440,7 @@ export default function ManagerDashboard() {
       const updatedAdvance = editAdvance.trim() !== '' ? parseFloat(editAdvance) : selectedRequest.advance;
       const updatedDuration = editDuration.trim() !== '' ? parseInt(editDuration) : selectedRequest.duration;
       
-      const response = await fetch(`http://192.168.3.251:5000/visit-request/${selectedRequest._id}`, {
+      const response = await fetch(API_ENDPOINTS.VISIT_REQUEST(selectedRequest._id), {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

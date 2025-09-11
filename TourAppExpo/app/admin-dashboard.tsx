@@ -163,7 +163,7 @@ export default function AdminDashboard() {
   // Fetch requests from API
   const fetchRequests = useCallback(async () => {
     try {
-      const response = await fetch('http://192.168.3.251:5000/visit-requests');
+      const response = await fetch(API_ENDPOINTS.VISIT_REQUESTS);
       if (response.ok) {
         const data = await response.json();
         setRequests(data);
@@ -441,7 +441,7 @@ export default function AdminDashboard() {
   const performAction = async (requestId: string, action: 'approve' | 'hold' | 'reject') => {
     try {
       // Use the new admin action endpoint with confirmation requirements
-      const response = await fetch(`http://192.168.3.251:5000/admin-action/${requestId}`, {
+      const response = await fetch(`${API_ENDPOINTS.ADMIN_ACTION}/${requestId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -541,7 +541,7 @@ export default function AdminDashboard() {
       const updatedAdvance = editAdvance.trim() !== '' ? parseFloat(editAdvance) : selectedRequest.advance;
       const updatedDuration = editDuration.trim() !== '' ? parseInt(editDuration) : selectedRequest.duration;
       
-      const response = await fetch(`http://192.168.3.251:5000/visit-request/${selectedRequest._id}`, {
+      const response = await fetch(API_ENDPOINTS.VISIT_REQUEST(selectedRequest._id), {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

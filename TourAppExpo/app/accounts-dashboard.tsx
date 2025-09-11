@@ -6,6 +6,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { API_ENDPOINTS } from '../config/api';
 
 interface VisitRequest {
   _id: string;
@@ -129,7 +130,7 @@ export default function AccountsDashboard() {
     if (!selectedRequestForPayment) return;
     
     try {
-              const response = await fetch(`http://192.168.3.251:5000/visit-request/${selectedRequestForPayment._id}/mark-paid`, {
+              const response = await fetch(`${API_ENDPOINTS.VISIT_REQUEST(selectedRequestForPayment._id)}/mark-paid`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -280,7 +281,7 @@ export default function AccountsDashboard() {
 
   const fetchRequests = async () => {
     try {
-      const response = await fetch('http://192.168.3.251:5000/visit-requests');
+      const response = await fetch(API_ENDPOINTS.VISIT_REQUESTS);
       if (response.ok) {
         const data = await response.json();
         setRequests(data);
