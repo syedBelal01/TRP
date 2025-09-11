@@ -1076,17 +1076,6 @@ def update_user_profile():
     # TODO: Extract user ID from JWT token and update profile
     return jsonify({'msg': 'Profile updated successfully'})
 
-# Health check endpoint
-@app.route('/health', methods=['GET'])
-def health_check():
-    """
-    Health check endpoint
-    ---
-    responses:
-      200:
-        description: Service is healthy
-    """
-    return jsonify({'status': 'healthy', 'timestamp': datetime.datetime.now().isoformat()})
 
 @app.route('/test-email', methods=['POST'])
 def test_email():
