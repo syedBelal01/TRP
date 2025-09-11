@@ -12,6 +12,7 @@ from email.mime.multipart import MIMEMultipart
 import random
 import string
 from db import test_connection
+from flasgger import Swagger, swag_from
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your-secret-key-here'
@@ -33,10 +34,91 @@ CORS(app)
 jwt = JWTManager(app)
 mongo = PyMongo(app)
 
+# Swagger configuration
+swagger_config = {
+    "headers": [],
+    "specs": [
+        {
+            "endpoint": 'apispec',
+            "route": '/apispec.json',
+            "rule_filter": lambda rule: True,
+            "model_filter": lambda tag: True,
+        }
+    ],
+    "static_url_path": "/flasgger_static",
+    "swagger_ui": True,
+    "specs_route": "/swagger"
+}
+
+swagger_template = {
+    "swagger": "2.0",
+    "info": {
+        "title": "TourApp API",
+        "description": "Travel Requisition Portal API Documentation",
+        "version": "1.0.0",
+        "contact": {
+            "name": "TourApp Support",
+            "email": "support@tourapp.com"
+        }
+    },
+    "host": "54.91.37.236",
+    "basePath": "/",
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header",
+            "description": "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\""
+        }
+    }
+}
+
+swagger = Swagger(app, config=swagger_config, template=swagger_template)
+
 # Health check endpoint
 @app.route('/health', methods=['GET'])
 def health_check():
-    """Health check endpoint for load balancer and monitoring"""
+    """
+    Health check endpoint for load balancer and monitoring
+    ---
+    tags:
+      - System
+    responses:
+      200:
+        description: Service is healthy
+        schema:
+          type: object
+          properties:
+            status:
+              type: string
+              example: healthy
+            database:
+              type: string
+              example: connected
+            timestamp:
+              type: string
+              example: "2025-09-11T12:22:57.378194"
+      503:
+        description: Service is unhealthy
+        schema:
+          type: object
+          properties:
+            status:
+              type: string
+              example: unhealthy
+            database:
+              type: string
+              example: disconnected
+            error:
+              type: string
+              example: "Connection failed"
+            timestamp:
+              type: string
+              example: "2025-09-11T12:22:57.378194"
+    """
     try:
         # Test database connection
         mongo.db.users.find_one()
