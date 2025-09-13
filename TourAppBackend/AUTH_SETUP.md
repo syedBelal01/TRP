@@ -15,11 +15,11 @@ This guide explains how to set up and use the new authentication system with OTP
 Update the Gmail settings in `app.py`:
 
 ```python
-app.config['MAIL_USERNAME'] = 'ahmad.prenit@gmail.com'  # Your Gmail address
-app.config['MAIL_PASSWORD'] = 'tevt swyk tpsp gzrr'  # Your Gmail app password
+app.config['MAIL_USERNAME'] = 'contactnitin.k@gmail.com'  # Your Gmail address
+app.config['MAIL_PASSWORD'] = 'alne vbwh niaj sedo'  # Your Gmail app password
 ```
 
-**Important**: Replace `ahmad.prenit@gmail.com` with your actual Gmail address.
+**Important**: The Gmail address is already configured as `contactnitin.k@gmail.com`.
 
 ### 2. Database Collections
 The system uses these MongoDB collections:

@@ -27,8 +27,8 @@ DEVELOPMENT_MODE = True  # Set to False in production
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'ahmad.prenit@gmail.com'  # TODO: Update with your Gmail
-app.config['MAIL_PASSWORD'] = 'tevt swyk tpsp gzrr'  # Your Gmail app password
+app.config['MAIL_USERNAME'] = 'contactnitin.k@gmail.com'  # TODO: Update with your Gmail
+app.config['MAIL_PASSWORD'] = 'alne vbwh niaj sedo'  # Your Gmail app password
 
 CORS(app)
 jwt = JWTManager(app)

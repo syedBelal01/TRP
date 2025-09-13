@@ -15,7 +15,7 @@ try:
         {"email": "ahmad@gmail.com", "password": "admin123"},
         {"email": "ahmadsyed7070@gmail.com", "password": "employee123"},
         {"email": "syed@gamil.com", "password": "manager123"},
-        {"email": "ahmad.prenit@gmail.com", "password": "employee123"},
+        {"email": "contactnitin.k@gmail.com", "password": "employee123"},
         {"email": "koli.prenitworld@gmail.com", "password": "employee123"}
     ]
     
@@ -42,7 +42,7 @@ try:
     print(f"  Admin: ahmad@gmail.com / admin123")
     print(f"  Employee: ahmadsyed7070@gmail.com / employee123")
     print(f"  Manager: syed@gamil.com / manager123")
-    print(f"  Employee: ahmad.prenit@gmail.com / employee123")
+    print(f"  Employee: contactnitin.k@gmail.com / employee123")
     print(f"  Employee: koli.prenitworld@gmail.com / employee123")
     
 except Exception as e:
