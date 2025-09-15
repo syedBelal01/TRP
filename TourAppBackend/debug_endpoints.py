@@ -7,7 +7,7 @@ import json
 
 def test_register():
     """Test the register endpoint"""
-    url = "http://localhost:5000/register"
+    url = "http://54.91.37.236/register"
     data = {
         "email": "test@test.com",
         "password": "test123",
@@ -26,7 +26,7 @@ def test_register():
 
 def test_login():
     """Test the login endpoint"""
-    url = "http://localhost:5000/login"
+    url = "http://54.91.37.236/login"
     data = {
         "email": "test@test.com",
         "password": "test123"
@@ -43,7 +43,7 @@ def test_login():
 
 def test_health():
     """Test if the server is responding"""
-    url = "http://localhost:5000/"
+    url = "http://54.91.37.236/"
     
     try:
         response = requests.get(url, timeout=5)

@@ -16,7 +16,8 @@
         "foregroundImage": "./assets/images/app-logo.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.prenitworld.trp"
     },
     "web": {
       "bundler": "metro",
@@ -37,6 +38,12 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "c833f169-16fb-4aeb-b6e1-c7da1fda01ff"
+      }
     }
   }
 }

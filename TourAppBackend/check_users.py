@@ -6,7 +6,7 @@ Script to check existing users in the database
 import requests
 import json
 
-BASE_URL = 'http://192.168.3.251:5000'
+BASE_URL = 'http://54.91.37.236'
 
 def test_login(email, password):
     """Test login with given credentials"""
@@ -21,34 +21,47 @@ def test_login(email, password):
         print(f"Error testing login for {email}: {e}")
         return None
 
-def test_registration(email, fullName, password, role):
-    """Test registration with given credentials"""
+def test_health():
+    """Test if the server is responding"""
     try:
-        response = requests.post(f'{BASE_URL}/register', json={
-            'email': email, 
-            'fullName': fullName, 
-            'password': password, 
-            'role': role
-        })
-        print(f"Registration for {email} ({role}):")
+        response = requests.get(f'{BASE_URL}/health')
+        print(f"Health check:")
         print(f"  Status: {response.status_code}")
         print(f"  Response: {response.text}")
         print()
         return response
     except Exception as e:
-        print(f"Error testing registration for {email}: {e}")
+        print(f"Error testing health: {e}")
+        return None
+
+def test_registration():
+    """Test user registration"""
+    try:
+        response = requests.post(f'{BASE_URL}/register', json={
+            'fullName': 'Test User',
+            'email': 'testuser@example.com',
+            'password': 'testpass123',
+            'role': 'employee'
+        })
+        print(f"Registration test:")
+        print(f"  Status: {response.status_code}")
+        print(f"  Response: {response.text}")
+        print()
+        return response
+    except Exception as e:
+        print(f"Error testing registration: {e}")
         return None
 
 if __name__ == "__main__":
-    print("Testing user accounts...")
+    print("Testing TourApp API endpoints...")
     print("="*50)
     
-    # Test existing admin login
-    test_login('admin@example.com', 'admin123')
-    test_login('admin2@example.com', 'admin123')
+    # Test health endpoint
+    test_health()
     
-    # Test employee registration
-    test_registration('employee@example.com', 'Test Employee', 'password123', 'employee')
+    # Test registration
+    test_registration()
     
-    # Test manager registration
-    test_registration('manager@example.com', 'Test Manager', 'password123', 'manager')
+    # Test login with existing users
+    test_login('ahmad.prenit@gmail.com', 'admin123')
+    test_login('testuser@example.com', 'testpass123')
