@@ -17,7 +17,11 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.prenitworld.trp"
+      "package": "com.prenitworld.trp",
+      "usesCleartextTraffic": true,
+      "networkSecurityConfig": {
+        "cleartextTrafficPermitted": true
+      }
     },
     "web": {
       "bundler": "metro",

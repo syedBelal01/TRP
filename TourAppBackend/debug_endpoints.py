@@ -43,7 +43,7 @@ def test_login():
 
 def test_health():
     """Test if the server is responding"""
-    url = "http://54.91.37.236/"
+    url = "http://54.91.37.236/health"
     
     try:
         response = requests.get(url, timeout=5)
@@ -54,6 +54,19 @@ def test_health():
         print(f"Health Error: {e}")
         return False
 
+def test_admin_check():
+    """Test admin check endpoint"""
+    url = "http://54.91.37.236/admin/check-exists"
+    
+    try:
+        response = requests.get(url, timeout=5)
+        print(f"Admin Check Status Code: {response.status_code}")
+        print(f"Admin Check Response: {response.text}")
+        return response.status_code == 200
+    except Exception as e:
+        print(f"Admin Check Error: {e}")
+        return False
+
 if __name__ == "__main__":
     print("🔍 Testing Backend Endpoints")
     print("=" * 40)
@@ -61,8 +74,11 @@ if __name__ == "__main__":
     print("\n1. Testing server health...")
     test_health()
     
-    print("\n2. Testing register endpoint...")
+    print("\n2. Testing admin check...")
+    test_admin_check()
+    
+    print("\n3. Testing register endpoint...")
     test_register()
     
-    print("\n3. Testing login endpoint...")
+    print("\n4. Testing login endpoint...")
     test_login()

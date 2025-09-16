@@ -1,0 +1,5 @@
+warning: in the working copy of 'TourAppExpo/app.json', LF will be replaced by CRLF the next time Git touches it
+TourAppBackend/check_users.py
+TourAppBackend/debug_endpoints.py
+TourAppExpo/app.json
+TourAppExpo/config/api.ts

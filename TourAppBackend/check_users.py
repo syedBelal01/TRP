@@ -52,12 +52,28 @@ def test_registration():
         print(f"Error testing registration: {e}")
         return None
 
+def test_admin_check():
+    """Test admin check endpoint"""
+    try:
+        response = requests.get(f'{BASE_URL}/admin/check-exists')
+        print(f"Admin check:")
+        print(f"  Status: {response.status_code}")
+        print(f"  Response: {response.text}")
+        print()
+        return response
+    except Exception as e:
+        print(f"Error testing admin check: {e}")
+        return None
+
 if __name__ == "__main__":
     print("Testing TourApp API endpoints...")
     print("="*50)
     
     # Test health endpoint
     test_health()
+    
+    # Test admin check
+    test_admin_check()
     
     # Test registration
     test_registration()
