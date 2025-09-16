@@ -1,5 +1,5 @@
 // API Configuration
-export const API_BASE_URL = 'http://54.91.37.236';
+export const API_BASE_URL = 'https://hhc2w0i54h.execute-api.us-east-1.amazonaws.com';
 
 // API Endpoints
 export const API_ENDPOINTS = {

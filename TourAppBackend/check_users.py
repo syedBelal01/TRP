@@ -6,7 +6,7 @@ Script to check existing users in the database
 import requests
 import json
 
-BASE_URL = 'http://54.91.37.236'
+BASE_URL = 'https://54.91.37.236'
 
 def test_login(email, password):
     """Test login with given credentials"""

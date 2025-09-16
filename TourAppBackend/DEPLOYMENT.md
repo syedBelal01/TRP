@@ -104,14 +104,14 @@ sudo firewall-cmd --reload
 
 ## Testing Your Deployment
 
-1. **Health Check:**
+1. **Health Check (HTTPS):**
    ```bash
-   curl http://your-ec2-ip/health
+   curl https://your-domain-or-ip/health -k
    ```
 
-2. **Test API Endpoints:**
+2. **Test API Endpoints (HTTPS):**
    ```bash
-   curl -X POST http://your-ec2-ip/register \
+   curl -X POST https://your-domain-or-ip/register \
      -H "Content-Type: application/json" \
      -d '{"email":"test@test.com","password":"test123","fullName":"Test User","role":"employee"}'
    ```
@@ -183,12 +183,7 @@ sudo firewall-cmd --reload
 
 Update your mobile app's API base URL to:
 ```
-http://your-ec2-public-ip
-```
-
-Or if using HTTPS:
-```
-https://your-domain.com
+https://your-domain-or-ip
 ```
 
 ## Support

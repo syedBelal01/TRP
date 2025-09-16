@@ -6,7 +6,7 @@ Script to create an admin user directly in the database for testing
 import requests
 import json
 
-BASE_URL = 'http://54.91.37.236'
+BASE_URL = 'https://hhc2w0i54h.execute-api.us-east-1.amazonaws.com'
 
 def create_admin_directly():
     """Create an admin user directly by calling the admin registration endpoint"""

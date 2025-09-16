@@ -95,8 +95,8 @@ sudo firewall-cmd --reload
 print_status "Deployment completed successfully! 🎉"
 print_warning "Next steps:"
 echo "1. Update server_name in $NGINX_CONF with your domain/IP"
-echo "2. Test your API: curl http://your-ec2-ip/health"
-echo "3. Update your mobile app to use: http://your-ec2-ip"
+echo "2. Test your API: curl https://your-domain-or-ip/health -k"
+echo "3. Update your mobile app to use: https://your-domain-or-ip"
 echo "4. Check logs: sudo journalctl -u $SERVICE_NAME -f"
 
 # Show current status
@@ -106,4 +106,4 @@ sudo systemctl is-active $SERVICE_NAME
 sudo systemctl is-active nginx
 
 echo ""
-print_status "Your API should be accessible at: http://$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4)"
+print_status "Your API should be accessible at: https://$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4)"
