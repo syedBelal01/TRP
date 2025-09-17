@@ -7,6 +7,7 @@
     "icon": "./assets/images/app-logo.png",
     "scheme": "tourappexpo",
     "userInterfaceStyle": "automatic",
+    "jsEngine": "hermes",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true
@@ -18,22 +19,23 @@
       },
       "edgeToEdgeEnabled": true,
       "package": "com.prenitworld.trp",
-      "usesCleartextTraffic": true,
-      "networkSecurityConfig": {
-        "cleartextTrafficPermitted": true
-      }
+      
     },
     "web": {
       "bundler": "metro",
       "output": "static",
       "favicon": "./assets/images/app-logo.png"
     },
+    "assetBundlePatterns": [
+      "assets/images/*",
+      "assets/fonts/*"
+    ],
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/images/app-logo.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
