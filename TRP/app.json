@@ -1,16 +1,17 @@
 {
   "expo": {
-    "name": "TourAppExpo",
+    "name": "TRP",
     "slug": "TourAppExpo",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/app-logo.png",
-    "scheme": "tourappexpo",
+    "scheme": "trp",
     "userInterfaceStyle": "automatic",
     "jsEngine": "hermes",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.prenitworld.trp"
     },
     "android": {
       "adaptiveIcon": {

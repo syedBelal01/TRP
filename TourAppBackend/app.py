@@ -21,7 +21,7 @@ app.config['JWT_SECRET_KEY'] = 'your-jwt-secret-key-here'
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = datetime.timedelta(hours=24)
 
 # Development mode flag
-DEVELOPMENT_MODE = True  # Set to False in production
+DEVELOPMENT_MODE = False  # Set to False in production
 
 # Email configuration
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
@@ -561,6 +561,13 @@ def verify_registration_otp():
 
         # Check if this is an Admin user - Admin users are auto-approved
         if pending['role'] == 'admin':
+            # Check admin restriction - only one admin allowed
+            admin_count = mongo.db.users.count_documents({'role': 'admin'})
+            if admin_count > 0:
+                # Clean up pending registration
+                mongo.db.pending_registrations.delete_one({'email': email})
+                return jsonify({'msg': 'Admin account already exists. Only one admin is allowed.'}), 400
+            
             # Move admin user directly to users collection (auto-approved)
             user_data = {
                 'email': pending['email'],
