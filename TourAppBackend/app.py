@@ -78,6 +78,20 @@ swagger_template = {
 
 swagger = Swagger(app, config=swagger_config, template=swagger_template)
 
+# Root endpoint
+@app.route('/', methods=['GET'])
+def root():
+    return jsonify({
+        'message': 'TourApp Backend API is running',
+        'version': '1.0.0',
+        'endpoints': {
+            'health': '/health',
+            'login': '/login',
+            'register': '/register',
+            'docs': '/swagger'
+        }
+    })
+
 # Health check endpoint
 @app.route('/health', methods=['GET'])
 def health_check():
