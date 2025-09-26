@@ -298,7 +298,7 @@ export default function Register() {
                 <>
                   <Title style={styles.formTitle}>Verify OTP</Title>
                   <Text style={styles.otpText}>
-                    We've sent a verification code to {formData.email}
+                    We&apos;ve sent a verification code to {formData.email}
                   </Text>
                   
                   <TextInput

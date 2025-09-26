@@ -460,8 +460,8 @@ def register():
         if existing_user:
             return jsonify({'msg': 'User already exists'}), 400
         
-        # Check admin restriction - only one admin allowed (unless in development mode)
-        if role == 'admin' and not DEVELOPMENT_MODE:
+        # Check admin restriction - only one admin allowed (ALWAYS)
+        if role == 'admin':
             admin_count = mongo.db.users.count_documents({'role': 'admin'})
             if admin_count > 0:
                 return jsonify({'msg': 'Admin account already exists. Only one admin is allowed.'}), 400
@@ -491,32 +491,7 @@ def register():
         # Insert pending registration
         mongo.db.pending_registrations.insert_one(pending_registration)
         
-        # For development mode: Admin users can be created directly without OTP
-        if DEVELOPMENT_MODE and role == 'admin':
-            # Create admin user directly in development mode
-            user_data = {
-                'email': email,
-                'password': bcrypt.hash(password),
-                'fullName': full_name,
-                'role': role,
-                'is_approved': True,
-                'created_at': datetime.datetime.now(),
-                'approved_at': datetime.datetime.now(),
-                'approved_by': 'Development Mode (Auto-approved)'
-            }
-            
-            # Insert into users collection
-            mongo.db.users.insert_one(user_data)
-            
-            return jsonify({
-                'msg': 'Admin account created successfully in development mode! You can now login.',
-                'email': email,
-                'role': role,
-                'status': 'approved',
-                'development_mode': True
-            })
-        
-        # Normal OTP flow for production or non-admin users
+        # Normal OTP flow for all users (including admin)
         # Send OTP email
         success, error = send_otp_email(email, otp, "registration")
         if not success:

@@ -338,7 +338,7 @@ export default function Login() {
                 <>
                   <Title style={styles.formTitle}>Verify OTP</Title>
                   <Text style={styles.otpText}>
-                    We've sent a verification code to {formData.email}
+                    We&apos;ve sent a verification code to {formData.email}
                   </Text>
                   
                   <TextInput
@@ -383,7 +383,7 @@ export default function Login() {
                  style={styles.registerButton}
                  textColor="#666"
                >
-                 Don't have an account? Register
+                 Don&apos;t have an account? Register
                </Button>
                
                <Button
